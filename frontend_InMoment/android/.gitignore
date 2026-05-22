@@ -1,0 +1,17 @@
+/.gradle/
+/captures/
+/local.properties
+GeneratedPluginRegistrant.java
+.cxx/
+
+# Release signing
+key.properties
+**/*.keystore
+**/*.jks
+
+# Build outputs
+/app/debug/
+/app/profile/
+/app/release/
+/build/
+.kotlin/

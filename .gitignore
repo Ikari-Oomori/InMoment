@@ -1,0 +1,106 @@
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vs/
+.idea/
+.vscode/
+*.suo
+*.user
+*.iml
+*.ipr
+*.iws
+
+# .NET
+**/bin/
+**/obj/
+**/TestResults/
+**/coverage/
+**/coverage-report/
+*.trx
+*.coverage
+*.coveragexml
+
+# Flutter / Dart
+**/.dart_tool/
+**/.pub-cache/
+**/.pub/
+**/build/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.metadata
+
+# Flutter generated platform state
+**/Flutter/.last_build_id
+**/Flutter/ephemeral/
+**/flutter/ephemeral/
+
+# Android / iOS generated/local
+**/android/local.properties
+**/android/key.properties
+**/android/.gradle/
+**/android/.kotlin/
+**/android/build/
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+**/ios/Flutter/ephemeral/
+**/macos/Flutter/ephemeral/
+
+# Firebase configs
+**/google-services.json
+**/GoogleService-Info.plist
+firebase_options.dart
+
+# Secrets / env
+.env
+.env.*
+!.env.example
+**/appsettings.Development.json
+**/appsettings.Local.json
+
+# Certificates / keys
+**/*.jks
+**/*.keystore
+**/*.pfx
+**/*.p12
+**/*.pem
+**/*.key
+**/*.crt
+
+# Logs / artifacts
+*.log
+*.bak
+publish/
+artifacts/
+
+# Misc
+*.swp
+*.class
+.history
+.svn/
+
+# Local databases / dumps
+*.db
+*.sqlite
+*.sqlite3
+*.dump
+*.sql
+*.backup
+
+# Coverage
+lcov.info
+coverage-final.json
+
+# .NET local configs
+**/appsettings.*.json
+!**/appsettings.json
+!**/appsettings.Example.json
+
+# Flutter generated web/firebase local files
+.flutter-plugins-dependencies
+firebase_app_id_file.json
+
+# Local release signing
+**/key.properties
+**/*.jks
+**/*.keystore

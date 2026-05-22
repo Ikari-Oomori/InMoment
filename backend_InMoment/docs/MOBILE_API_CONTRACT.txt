@@ -1,0 +1,117 @@
+InMoment mobile API contract
+
+Profile
+GET /api/users/me — получение данных текущего пользователя
+
+Groups
+GET /api/groups/my
+
+Feed
+GET /api/groups/{groupId}/feed/paged
+
+Feed fields:
+PhotoId
+GroupId
+AuthorId
+AuthorUserName
+AuthorProfilePhotoUrl
+Url
+ContentType
+SizeBytes
+Caption
+CreatedAt
+Reactions
+MyReaction
+CommentsCount
+ReactionsCount
+
+Photo details
+GET /api/photos/{photoId}
+
+Photo fields:
+PhotoId
+GroupId
+AuthorId
+AuthorUserName
+AuthorFirstName
+AuthorLastName
+AuthorProfilePhotoUrl
+Url
+ContentType
+SizeBytes
+Caption
+CreatedAt
+MyReaction
+Reactions
+CommentsCount
+AuthorIsActive
+IsMine
+CanEdit
+CanDelete
+
+Comments
+GET /api/photos/{photoId}/comments/paged
+
+Fields:
+Id
+PhotoId
+UserId
+UserName
+FirstName
+LastName
+ProfilePhotoUrl
+ParentCommentId
+ParentCommentUserId
+ParentCommentUserName
+ParentCommentTextPreview
+Text
+CreatedAt
+EditedAt
+IsMine
+UserIsActive
+ParentCommentUserIsActive
+GifUrl
+Reactions
+ReactionsCount
+MyReaction
+
+Create comment
+POST /api/photos/{photoId}/comments
+
+Reply
+POST /api/photos/{photoId}/comments/reply
+
+Edit
+PATCH /api/comments/{commentId}
+
+Delete
+DELETE /api/comments/{commentId}
+
+Discussions
+GET /api/groups/{groupId}/discussions
+
+Fields:
+PhotoId
+PhotoUrl
+PhotoCreatedAt
+PhotoCaption
+PhotoAuthorUserId
+PhotoAuthorUserName
+PhotoAuthorProfilePhotoUrl
+CommentsCount
+LatestCommentText
+LatestCommentUserId
+LatestCommentUserName
+LatestCommentUserProfilePhotoUrl
+LatestCommentCreatedAt
+LastActivityAt
+Reactions
+ReactionsCount
+MyReaction
+
+Restrictions
+
+Do not use /feed without paging
+Do not use /comments without paging
+Do not use legacy GetComments
+Use paged endpoints as canonical

@@ -1,0 +1,82 @@
+InMoment mobile upload flow
+
+Этот файл фиксирует канонический backend flow для экрана камеры и публикации медиафайла во Flutter
+
+Основной сценарий
+
+1. Пользователь выбирает активную группу
+2. Клиент делает запрос на presign upload
+3. Клиент загружает файл напрямую в storage по presigned URL
+4. Клиент вызывает publish photo endpoint
+5. Клиент получает PhotoId
+6. Клиент обновляет feed группы
+7. При необходимости клиент открывает photo details по PhotoId
+
+Канонические endpoint-ы
+
+1. Presign upload
+POST /api/uploads/photos/presign
+
+Request body:
+{
+  "groupId": "GUID",
+  "contentType": "image/jpeg"
+}
+
+Response body:
+{
+  "uploadUrl": "string",
+  "storageKey": "string",
+  "fileUrl": "string",
+  "expiresAt": "date-time"
+}
+
+2. Publish media/photo
+POST /api/groups/{groupId}/photos
+
+Request body:
+{
+  "storageKey": "string",
+  "contentType": "image/jpeg",
+  "sizeBytes": 123456,
+  "caption": "string or null"
+}
+
+Response body: 
+"GUID"
+
+3. Read group feed
+GET /api/groups/{groupId}/feed/paged
+
+4. Read photo details
+GET /api/photos/{photoId}
+
+Правила для Flutter
+
+1. Нельзя вызывать publish до успешной загрузки файла в storage
+2. StorageKey для publish должен быть получен только из presign response
+3. GroupId для publish должен совпадать с GroupId, использованным при presign
+4. После publish публикация считается успешной только после получения успешного HTTP ответа
+5. После publish клиенту лучше обновлять feed/paged, а не пытаться вручную собирать карточку из локальных данных
+6. Если нужен экран открытой фотографии, использовать GET /api/photos/{photoId}
+
+Допустимые content types
+
+image/jpeg
+image/png
+image/webp
+image/heic
+image/heif
+video/mp4
+video/quicktime
+video/x-m4v
+video/webm
+video/3gpp
+
+Ограничения backend
+
+1. Пользователь должен быть активным участником группы
+2. StorageKey должен начинаться с префикса:
+groups/{groupId}/photos/{userId}/
+3. Размер файла должен быть валидным
+4. Backend сам валидирует content type и storage key prefix

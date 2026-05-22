@@ -1,0 +1,12 @@
+<Project>
+  <Target Name="CleanGeneratedArtifactsFromProjectView" BeforeTargets="BeforeBuild">
+    <ItemGroup>
+      <None Remove="**\TestResults\**" />
+      <Content Remove="**\TestResults\**" />
+      <None Remove="**\coverage\**" />
+      <Content Remove="**\coverage\**" />
+      <None Remove="**\coverage-report\**" />
+      <Content Remove="**\coverage-report\**" />
+    </ItemGroup>
+  </Target>
+</Project>

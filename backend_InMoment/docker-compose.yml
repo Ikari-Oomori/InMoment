@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: inmoment-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: inmoment
+      POSTGRES_USER: postgres
+      # Local development only. Do not use these credentials in production.
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - inmoment-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d inmoment"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  minio:
+    image: minio/minio
+    container_name: inmoment-minio
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      # Local development only. Do not use these credentials in production.
+      MINIO_ROOT_PASSWORD: minioadmin
+      MINIO_API_CORS_ALLOW_ORIGIN: "*"
+    command: server /data --console-address ":9001"
+    volumes:
+      - inmoment-minio-data:/data
+
+volumes:
+  inmoment-postgres-data:
+  inmoment-minio-data:

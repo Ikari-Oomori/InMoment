@@ -1,0 +1,8 @@
+﻿namespace InMoment.Domain.Notifications;
+
+public enum PushPlatform
+{
+    Ios = 1,
+    Android = 2,
+    Web = 3
+}

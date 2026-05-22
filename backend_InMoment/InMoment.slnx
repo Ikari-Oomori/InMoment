@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="InMoment.Application/InMoment.Application.csproj" />
+  <Project Path="InMoment.Domain/InMoment.Domain.csproj" />
+  <Project Path="InMoment.Infrastructure/InMoment.Infrastructure.csproj" />
+  <Project Path="InMoment.Test/InMoment.Tests.csproj" />
+  <Project Path="InMoment/InMoment.API.csproj" />
+</Solution>
