@@ -72,7 +72,6 @@ public sealed class ReactionRepository : IReactionRepository
             .Select(x => new { x.PhotoId, x.Type })
             .ToListAsync(ct);
 
-        // гарантируем 1 реакцию на фото (у тебя unique (PhotoId,UserId))
         return rows.ToDictionary(x => x.PhotoId, x => x.Type);
     }
 }
