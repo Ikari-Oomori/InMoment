@@ -1308,44 +1308,6 @@ class _AdaptiveFeedMediaState extends State<_AdaptiveFeedMedia> {
   }
 }
 
-/*class _FeedVideoPlaceholder extends StatelessWidget {
-  const _FeedVideoPlaceholder();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.surface,
-      alignment: Alignment.center,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
-        decoration: BoxDecoration(
-          color: Colors.black.withValues(alpha: 0.34),
-          borderRadius: BorderRadius.circular(999),
-        ),
-        child: const Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              Icons.play_arrow_rounded,
-              color: Colors.white,
-              size: 18,
-            ),
-            SizedBox(width: 5),
-            Text(
-              'Видео',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-                fontWeight: FontWeight.w800,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}*/
-
 class _FeedErrorState extends StatelessWidget {
   final String message;
   final bool loading;
